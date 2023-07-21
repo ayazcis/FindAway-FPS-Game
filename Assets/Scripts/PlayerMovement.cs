@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
     public float speed = 12f;
     public float tempSpeed;
     public float runSpeed = 12f;
@@ -49,8 +50,8 @@ public class PlayerMovement : MonoBehaviour
 		{
             tempSpeed = speed;
             speed = runSpeed;
-            rightHand.SetBool("run", true);
             leftHand.SetBool("run", true);
+            rightHand.SetBool("run", true);
 
 		}
 		else
