@@ -9,6 +9,9 @@ public class Rifle : MonoBehaviour
     public TextMeshProUGUI pressE;
     public LayerMask whatIsPlayer;
 
+    public Animator leftArm;
+    public Animator rightArm;
+
     public GameObject rifle;
     public GameObject floorRifle;
     public AudioSource rifleTakeSound;
@@ -29,6 +32,8 @@ public class Rifle : MonoBehaviour
             pressE.enabled = true;
 			if (Input.GetKey(KeyCode.E))
 			{
+                leftArm.SetBool("armed", true);
+                rightArm.SetBool("armed", true);
                 rifleTakeSound.enabled = true;
                 pressE.enabled = false;
                 rifle.SetActive(true);

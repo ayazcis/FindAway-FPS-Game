@@ -1678,6 +1678,8 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  leftArm: {fileID: 121468709}
+  rightArm: {fileID: 293748976}
   rifle: {fileID: 69798013}
   floorRifle: {fileID: 893766035}
   rifleTakeSound: {fileID: 203803434}
@@ -3885,7 +3887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -731, y: -368}
+  m_AnchoredPosition: {x: -767, y: -445}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910234249
@@ -3910,8 +3912,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press 'E' to get the rifle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 55a93f4f8a99ce649a87fb9b8b429093, type: 2}
+  m_sharedMaterial: {fileID: 8482073550632068076, guid: 55a93f4f8a99ce649a87fb9b8b429093, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
