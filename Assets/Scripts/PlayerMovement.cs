@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
 
+    public Transform mainCam;
+
     public Animator leftHand;
     public Animator rightHand;
 
@@ -13,13 +15,17 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource runSound;
     public AudioSource jumpSound;
 
-
+    public float crouchSpeed=10f;
     public float speed = 12f;
     public float tempSpeed;
     public float runSpeed = 12f;
+    public float originalHeight;
+    public float crouchHeight;
 
     public float gravity = -9.81f;
     public float jump = 1f;
+
+    private bool crouch = false;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -37,6 +43,28 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         speed = tempSpeed;
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            tempSpeed = speed;
+            controller.height = crouchHeight;
+            crouch = true;
+            speed = crouchSpeed;
+            walkSound.volume = 0.23f;
+            walkSound.pitch = 0.6f;
+
+
+
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            speed = tempSpeed;
+            controller.height = originalHeight;
+            crouch = false;
+            walkSound.volume = 0.5f;
+            walkSound.pitch = 0.7f;
+        }
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -56,7 +84,8 @@ public class PlayerMovement : MonoBehaviour
             rightHand.SetBool("run", true);
             runSound.enabled = true;
 
-		}
+
+        }
 		else
 		{
             rightHand.SetBool("run", false);
@@ -71,6 +100,8 @@ public class PlayerMovement : MonoBehaviour
             jumpSound.Play();
         }
 
+        
+
 
 
         velocity.y += gravity * Time.deltaTime;
@@ -78,10 +109,13 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 		if (x!= 0 || z!=0)
 		{
+            
             leftHand.SetBool("move", true);
             rightHand.SetBool("move", true);
+            Debug.Log(crouch);
             walkSound.enabled = true;
-		}
+
+        }
 		else
 		{
             leftHand.SetBool("move", false);
