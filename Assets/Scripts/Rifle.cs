@@ -8,9 +8,11 @@ public class Rifle : MonoBehaviour
     public float rifleCheckDistance=2.4f;
     public TextMeshProUGUI pressE;
     public LayerMask whatIsPlayer;
-
+    
     public Animator leftArm;
     public Animator rightArm;
+
+    public GameObject cross;
 
     public GameObject rifle;
     public GameObject floorRifle;
@@ -32,6 +34,7 @@ public class Rifle : MonoBehaviour
             pressE.enabled = true;
 			if (Input.GetKey(KeyCode.E))
 			{
+                cross.SetActive(true);
                 leftArm.SetBool("armed", true);
                 rightArm.SetBool("armed", true);
                 rifleTakeSound.enabled = true;

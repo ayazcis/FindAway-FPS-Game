@@ -72,6 +72,13 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        Debug.Log(isGrounded);
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+            jumpSound.Play();
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -94,11 +101,8 @@ public class PlayerMovement : MonoBehaviour
         }
  
         controller.Move(move * speed * Time.deltaTime);
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jump * -2f * gravity);
-            jumpSound.Play();
-        }
+
+
 
         
 
